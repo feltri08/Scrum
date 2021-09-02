@@ -1,7 +1,9 @@
 const {connect} = require('getstream');
-const bycrypt = require('bcrypt');
-const StreaChat = require('stream-chat');
+const bcrypt = require('bcrypt');
+const StreamChat = require('stream-chat').StreamChat;
 const crypto = require('crypto');
+
+require('dotenv').config();
 
 const api_key = process.env.STREAM_API_KEY;
 const api_secret = process.env.STREAM_API_SECRET;
@@ -20,7 +22,7 @@ const signup = async(req,res) => {
 
     } catch (error) {
         console.log(error);
-        resizeBy.status(500).json({message:error})
+        res.status(500).json({message:error})
     }
 };
 
@@ -45,7 +47,7 @@ const login = async(req,res) => {
 
     } catch (error) {
         console.log(error);
-        resizeBy.status(500).json({message:error})
+        res.status(500).json({message:error})
     }
 };
 
