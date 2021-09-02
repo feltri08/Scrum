@@ -26,11 +26,11 @@ const signup = async(req,res) => {
     }
 };
 
-const login = async(req,res) => {
+const login = async(req, res) => {
     try {
-        const {username,password}= req.body;
+        const { username, password } = req.body;
         const serverClient=connect(api_key, api_secret, app_id);
-        const client = StreamChat.getInstance(api_key,api_Secret);
+        const client = StreamChat.getInstance(api_key, api_secret);
 
         const {users} = await client.queryUsers({name:username});
 
@@ -45,10 +45,10 @@ const login = async(req,res) => {
             res.status(500).json({message: 'Contraseña incorrecta' })
         }
 
-    } catch (error) {ads 
+    } catch (error) {ads
         console.log(error);
         res.status(500).json({message:error})
     }
 };
 
-module.exports = {signup,login};
+module.exports = { signup, login };
