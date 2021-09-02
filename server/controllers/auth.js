@@ -36,16 +36,16 @@ const login = async(req,res) => {
 
         if(!users.legth) return res.status(400).json({message:'User not found'})
 
-        const success = await bcrypt.compare(password,users[0],hashedPassword);
+        const success = await bcrypt.compare(password, users[0].hashedPassword);
         const token = serverClient.createUserToken(users[0].id);
 
         if(success){
-            res.status(200).json({token,fullName:users[0].fullName,username,userId:users[0].id});
+            res.status(200).json({token, fullName: users[0].fullName, username, userId: users[0].id});
         }else{
-            res.status(500).json({message:error})
+            res.status(500).json({message: 'Contraseña incorrecta' })
         }
 
-    } catch (error) {
+    } catch (error) {ads 
         console.log(error);
         res.status(500).json({message:error})
     }
