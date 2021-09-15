@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Avatar, useChatChannel, useChatContext } from 'stream-chat-react';
+import { initialState } from 'stream-chat-react/dist/components/Channel/channelState';
 
 import { InviteIcon } from '../assets';
 
@@ -15,25 +16,38 @@ const ListContainer = ({ children }) => {
     )
 }
 
-const UserItem = ({user}) => {
+const UserItem = ({user, setSelectedUsers}) => {
+
+    const [selected, setSelected] = useState(false)
+
+    const handleSelect = () => {
+        if (selected){
+            setSelectedUsers((prevUsers) => prevUsers.filter((prevUser) => prevUser !== user.id))
+        } else {
+            setSelectedUsers((prevUsers) => [...prevUsers, user.id] )
+        }
+
+        setSelected((prevSelected) => !prevSelected);
+    }
+
     return(
-        <div className="user-item_wrap">
+        <div className="user-item_wrap" onClick={handleSelect}>
             <div className="user-item__name-wrapper">
                 <Avatar image={user.image} name={user.fullName || user.id} size={32} />
                 <p className="user-item__name">{user.fullName || user.id}</p>
             </div>
-            <InviteIcon />
-            <div className="user-item__invite-empty" />
+            {selected ? <InviteIcon /> : <div className="user-item__invite-empty" />}
         </div>
     )
 }
 
 
-const UserList = () => {
+const UserList = ( {setSelectedUsers} ) => {
     const {client} = useChatContext();
     const [users,setUsers] = useState([]);
     const [loading,setLoading] = useState(false);
     const [listEmpty,setListEmpty] = useState([false]);
+    const [error, setError] = useState(false);
 
     useEffect(() => {
         const getUsers = async () => {
@@ -54,13 +68,33 @@ const UserList = () => {
                     setListEmpty(true);
                 }
             } catch(error){
-                console.log(error);
+                setError(true);
             }
             setLoading(false);
         }
         
         if(client) getUsers()
-    }, [])
+    }, []);
+
+    if (error) {
+        return (
+            <ListContainer>
+                <div className="user-list__message">
+                    Error de carga, por favor recagar la página
+                </div> 
+            </ListContainer>   
+        )
+    }
+
+    if (listEmpty) {
+        return (
+            <ListContainer>
+                <div className="user-list__message">
+                    No hay ningún usuario.
+                </div> 
+            </ListContainer>   
+        )
+    }
     
     return (
         <ListContainer>
