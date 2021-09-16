@@ -9,3 +9,4 @@ export { default as ChannelInner } from './ChannelInner';
 export { default as TeamMessage } from './TeamMessage';
 export { default as UserList } from './UserList';
 export { default as Auth } from './Auth';
+export { default as ResultsDropdown } from './ResultsDropdown';

@@ -46,7 +46,7 @@ const UserList = ( {setSelectedUsers} ) => {
     const {client} = useChatContext();
     const [users,setUsers] = useState([]);
     const [loading,setLoading] = useState(false);
-    const [listEmpty,setListEmpty] = useState([false]);
+    const [listEmpty,setListEmpty] = useState(false);
     const [error, setError] = useState(false);
 
     useEffect(() => {
@@ -102,7 +102,7 @@ const UserList = ( {setSelectedUsers} ) => {
                 Cargando usuarios...
             </div>: (
                 users?.map((user,i) => (
-                    <UserItem index={i} key={user.id} user={user} />
+                    <UserItem index={i} key={user.id} user={user} setSelectedUsers={setSelectedUsers} />
                 ))
             )}
         </ListContainer>
