@@ -1,6 +1,6 @@
 :root {
-    --primary-color: #005fff;
-    --primary-color-alpha: #005fff1a;
+    --primary-color: #86529F;
+    --primary-color-alpha: #52216B;
   }
   
   html,
@@ -27,7 +27,8 @@
     justify-content: center;
   
     padding: 2rem;
-    background: #005fff;
+    background: rgb(54,16,122);
+    background: linear-gradient(201deg, rgba(54,16,122,1) 0%, rgba(71,33,139,1) 54%, rgba(91,37,217,1) 100%);
   }
   
   .auth__form-container_image {
@@ -367,13 +368,14 @@
     display: flex;
     /* height: 800px; */
     height: 100%;
-    box-shadow: inset 1px 0px 0px rgba(0, 0, 0, 0.1);
+    background: rgb(54,16,122);
+    background: linear-gradient(201deg, rgba(54,16,122,1) 0%, rgba(71,33,139,1) 54%, rgba(91,37,217,1) 100%);
+    box-shadow:white;
   }
   
   .channel-list__sidebar {
     width: 72px;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-      var(--primary-color);
+    background: #86529F; 
     box-shadow: 1px 0px 0px rgba(0, 0, 0, 0.25);
     /* border-top-left-radius: 16px; */
     /* border-bottom-left-radius: 16px; */
@@ -396,7 +398,8 @@
   .channel-list__list__wrapper {
     display: flex;
     flex-direction: column;
-    background: var(--primary-color);
+    background: rgb(98,106,196);
+    background: linear-gradient(0deg, rgba(98,106,196,1) 13%, rgba(96,39,143,1) 100%, rgba(253,187,45,1) 100%);
     width: 240px;
   }
   
@@ -486,7 +489,7 @@
   }
   
   ::placeholder {
-    color: rgba(255, 255, 255, 0.66);
+    color: #808080;
     white-space: nowrap;
     width: 150px;
   }
@@ -667,12 +670,13 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    padding: 0 20px;
   }
   
   .user-list__header {
     display: flex;
     align-items: center;
-    margin: 0px 20px;
+    margin: 020px;
     justify-content: space-between;
   }
   
@@ -691,7 +695,7 @@
   .user-list__header p:nth-child(2) {
     flex: 0.5;
     text-align: right;
-    margin: 0px 20px;
+    margin: 20px 20px;
   }
   
   .user-list__message {
@@ -704,7 +708,7 @@
   .user-item__wrapper {
     display: flex;
     align-items: center;
-    margin: 0px 20px;
+    margin: 20px 20px;
     justify-content: space-between;
   }
   
