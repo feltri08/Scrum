@@ -1,0 +1,25 @@
+version: '3'
+services:
+  back:
+    container_name: back-cont
+    build:
+      context: server
+      dockerfile: ./Dockerfile
+    ports:
+      - "5000:5000"
+    networks:
+      - Scrum-network
+  
+  front:
+    container_name: front-cont
+    build:
+      context: client
+      dockerfile: ./Dockerfile
+    ports:
+      - "3000:3000"
+    networks:
+      - Scrum-network
+
+networks:
+  Scrum-network:
+    driver: bridge
