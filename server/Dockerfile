@@ -15,5 +15,5 @@ RUN npm install
 # Bundle app source
 ADD . .
 
-EXPOSE 5000
+EXPOSE 5001
 CMD [ "npm", "run", "dev" ]

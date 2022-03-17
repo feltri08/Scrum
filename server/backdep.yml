@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: back-deployment
+  labels: 
+    app: back
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: back
+  template:
+    metadata:
+      labels:
+        app: back
+    spec:
+      containers:
+      - name: back
+        image: feltri08/back-scrum
+        ports:
+        - containerPort: 5001
+        env:
+        - name: STREAM_APP_ID
+          value: "1173587"
+        - name: STREAM_API_KEY
+          value: 3xvsxvtm64x5
+        - name: STREAM_API_SECRET
+          value: e62q2qt77jk7ym7mddxgtp5svuq8mztev53tj3u5xgrg5e6vyptf9gb2a77pcb4v
+
+
+
